@@ -31,7 +31,7 @@ class Shop: # Объекты класса Shop будут создаваться
                 with open(self.__file_name, 'a') as file:
                     file.write(str(product) + '\n')
                 print(str(product))
-# Пример работы программы:
+# Пример выполняемого кода:
 s1 = Shop()
 p1 = Product('Potato', 50.5, 'Vegetables')
 p2 = Product('Spaghetti', 3.4, 'Groceries')
