@@ -18,19 +18,20 @@ class Shop: # Объекты класса Shop будут создаваться
             with open(self.__file_name, 'r') as file:
                 return file.read().strip()
         except FileNotFoundError:
-            return
+            return ""
 
     def add(self, *products):
         existing_products = self.get_products().splitlines()
-        existing_product_names = {line.split(", ")[0] for line in existing_products}
+        existing_names = {line.split(',')[0].strip() for line in existing_products}
 
         for product in products:
-            if product.name in existing_product_names:
-                print(f"Продукт {product.name} уже есть в магазине")
+            if product.name in existing_names:
+                print(f'Продукт {product.name} уже есть в магазине')
             else:
                 with open(self.__file_name, 'a') as file:
                     file.write(str(product) + '\n')
                 print(str(product))
+
 # Пример выполняемого кода:
 s1 = Shop()
 p1 = Product('Potato', 50.5, 'Vegetables')
